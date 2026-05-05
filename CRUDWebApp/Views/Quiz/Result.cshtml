@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CRUDWebApp.Models.QuizResult>
+
+@{
+    ViewData["Title"] = "Quiz Results";
+
+    var score = Model.Count(r => r.IsCorrect);
+    var total = Model.Count();
+}
+
+<h1>Quiz Results</h1>
+
+<h3>You scored @score / @total</h3>
+
+<hr />
+
+@foreach (var result in Model)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>@result.Question.NumericalQuestion</h5>
+
+            <p>
+                <strong>Your answer:</strong> @result.UserAnswer
+            </p>
+
+            <p>
+                <strong>Correct answer:</strong> @result.Question.NumericalAnswer
+            </p>
+
+            @if (result.IsCorrect)
+            {
+                <p class="text-success"><strong>Correct</strong></p>
+            }
+            else
+            {
+                <p class="text-danger"><strong>Incorrect</strong></p>
+            }
+        </div>
+    </div>
+}
+
+<a asp-controller="Quiz" asp-action="Index" class="btn btn-primary">Try Again</a>

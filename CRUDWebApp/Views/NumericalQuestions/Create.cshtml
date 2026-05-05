@@ -1,0 +1,61 @@
+﻿@model CRUDWebApp.Models.NumericalQuestions
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NumericalQuestions</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NumericalQuestion" class="control-label"></label>
+                <input asp-for="NumericalQuestion" class="form-control" />
+                <span asp-validation-for="NumericalQuestion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumericalAnswer" class="control-label"></label>
+                <input asp-for="NumericalAnswer" class="form-control" />
+                <span asp-validation-for="NumericalAnswer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <select asp-for="Category" class="form-control">
+                    <option value="">-- Select Category --</option>
+                    <option value="Numerical Reasoning">Numerical Reasoning</option>
+                    <option value="Number Patterns">Number Patterns</option>
+                    <option value="Percentages">Percentages</option>
+                    <option value="Ratios">Ratios</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Difficulty" class="control-label"></label>
+                <select asp-for="Difficulty" class="form-control">
+                    <option value="">-- Select Difficulty --</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+                <span asp-validation-for="Difficulty" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
